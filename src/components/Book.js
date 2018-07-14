@@ -3,25 +3,22 @@ import React, { Component } from 'react'
 export default class Book extends Component {
   
 state = {
-shelf: this.props.shelfName
+shelf: this.props.shelf
 }
 
-changeBookShelf (book, value) {
-  console.log(value);
-  this.props.updateShelf(book, value);
+changeBookShelf (value) {
+  this.props.updateShelf(value);
     this.setState({ shelf: value });
     };
 
   render() {
-    const books = this.props.books;
-    console.log("Props", this.props);
     return (
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imageLinks.thumbnail})` }}></div>
             <div className="book-shelf-changer">
               <select 
-              onChange={ (event) => this.changeBookShelf(this, event.target.value)}
+              onChange={ (event) => this.changeBookShelf(event.target.value)}
               value= {this.state.shelf}
 
               >

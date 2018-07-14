@@ -3,6 +3,10 @@ import Book from './Book'
 
 export default class BookShelf extends Component {
 
+updateShelf(book, shelf) {
+	this.props.updateShelf(book, shelf)
+}
+
   render() {
     const books = this.props.books
     return (
@@ -13,11 +17,13 @@ export default class BookShelf extends Component {
             {books.map((book) => (
             	<li key = {book.id}>
             	<Book books={this}
-            		shelfName = {this.props.shelfName}
+            		 id = {book.id}
+            		 shelf ={book.shelf}
                      authors={ book.authors }
                      title={ book.title }
                      imageLinks={ book.imageLinks }
-            	     updateShelf = {this.props.updateShelf} />
+            	     updateShelf = {(shelf) => 
+            	     	this.updateShelf(book, shelf)} />
             	</li>))}
           </ol>
         </div>
