@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import AllBooks from './components/AllBooks'
+import Search from './components/Search'
 
 export default class BooksApp extends Component {
 
@@ -30,11 +32,21 @@ export default class BooksApp extends Component {
 
 
   render() {
-    console.log(this.state.books)
 
     return (
-      <div>
-        <AllBooks books={this.state.books} updateShelf={this.changeBookShelf} />
+      <div className="app">
+        <Route exact path='/' render={() => (
+          <AllBooks
+            books={this.state.books}
+            updateShelf={this.changeBookShelf}
+          />
+        )}/>
+        <Route path='/search' render={({ history }) => (
+          <Search
+            searchedBooks={this.state.books}
+            updateShelf={this.changeBookShelf}
+          />
+        )}/>
       </div>
     )
 
