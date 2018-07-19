@@ -15,13 +15,14 @@ updateShelf(book, shelf) {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {books.map((book) => (
+            	
             	<li key = {book.id}>
             	<Book books={this}
             		 id = {book.id}
             		 shelf ={book.shelf}
                      authors={ book.authors }
                      title={ book.title }
-                     imageLinks={ book.imageLinks }
+                     imageLinks={ book.imageLinks.thumbnail }
             	     updateShelf = {(shelf) => 
             	     	this.updateShelf(book, shelf)} />
             	</li>))}

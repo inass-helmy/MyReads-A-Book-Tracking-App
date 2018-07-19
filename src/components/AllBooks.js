@@ -36,6 +36,7 @@ render() {
         shelfName= "Read"
         updateShelf = {this.props.updateShelf} />
       </div>
+      
       <div className="open-search">
               <Link to = '/search'>Add a book</Link>
             </div>

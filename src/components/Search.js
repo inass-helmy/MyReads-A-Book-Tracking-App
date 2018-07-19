@@ -17,7 +17,7 @@ export default class Search extends Component {
 
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
-    this.searchBooks();
+    this.searchBooks(query);
   }
 
 
@@ -25,19 +25,19 @@ export default class Search extends Component {
     this.props.updateShelf(book, shelf);
   };
 
-  searchBooks = () => {
+  searchBooks = (query) => {
     const { showingBooks } = this.state;
     const { myBooks } = this.props;
-    const { query } = this.state;
+   
     if (query.length > 0) {
       const match = new RegExp(escapeRegExp(query), 'i');
       BooksAPI.search(query).then((books) => {
         if (books.length >0) {
           books = books.filter((book) => (book.imageLinks));
-          console.log(books)
           const allbooks = books.map((book) => {
-                    const myBook = myBooks.filter((myBook) => myBook.title === book.title);
-                    const shelf = myBook ? book.shelf : 'none';
+                    const myBook = myBooks.filter((myBook) => myBook.id === book.id);
+                    const shelf = myBook.length>0 ? myBook.shelf : 'none';
+                    console.log(shelf);
                     return {
                         id: book.id,
                         shelf: shelf,
@@ -45,11 +45,12 @@ export default class Search extends Component {
                         title: book.title,
                         imageLinks: book.imageLinks
                         }
+          
 
                 });
-          books.sort(sortBy('title'));
-          this.setState({showingBooks : books});
-          // console.log(this.state.showingBooks)  
+          allbooks.sort(sortBy('title'));
+          console.log(allbooks)
+          this.setState({showingBooks : allbooks});
       }
       })
         }
