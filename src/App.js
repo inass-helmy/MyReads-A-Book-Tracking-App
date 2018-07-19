@@ -43,7 +43,7 @@ export default class BooksApp extends Component {
         )}/>
         <Route path='/search' render={({ history }) => (
           <Search
-            searchedBooks={this.state.books}
+            myBooks={this.state.books}
             updateShelf={this.changeBookShelf}
           />
         )}/>

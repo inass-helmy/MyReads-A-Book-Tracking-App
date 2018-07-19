@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Book extends Component {
   
 state = {
-shelf: this.props.shelf
+shelf: 'this.props.shelf'
 }
 
 changeBookShelf (value) {
