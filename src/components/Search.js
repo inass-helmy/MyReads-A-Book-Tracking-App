@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import Book from './Book'
 import * as BooksAPI from '../BooksAPI'
@@ -20,45 +19,37 @@ export default class Search extends Component {
     this.searchBooks(query);
   }
 
-
   addBookToShelf = (book, shelf) => {
     this.props.updateShelf(book, shelf);
   };
 
   searchBooks = (query) => {
-    const { showingBooks } = this.state;
     const { myBooks } = this.props;
    
     if (query.length > 0) {
-      const match = new RegExp(escapeRegExp(query), 'i');
       BooksAPI.search(query).then((books) => {
         if (books.length >0) {
           books = books.filter((book) => (book.imageLinks));
-          const allbooks = books.map((book) => {
+          const searchedBooks = books.map((book) => {
                     const myBook = myBooks.filter((myBook) => myBook.id === book.id);
-                    const shelf = myBook.length>0 ? myBook.shelf : 'none';
-                    console.log(shelf);
+                    const shelf = myBook.length>0 ? myBook[0].shelf : 'none';
                     return {
                         id: book.id,
                         shelf: shelf,
                         authors: book.authors,
                         title: book.title,
-                        imageLinks: book.imageLinks
+                        imageLinks: book.imageLinks 
                         }
-          
-
                 });
-          allbooks.sort(sortBy('title'));
-          console.log(allbooks)
-          this.setState({showingBooks : allbooks});
+          searchedBooks.sort(sortBy('title'));
+          this.setState({showingBooks : searchedBooks});
       }
       })
         }
       }
 
-
   render() {
-
+    const { showingBooks } = this.state;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -73,7 +64,7 @@ export default class Search extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {
-              this.state.query.length>0 && this.state.showingBooks.map((book) => (
+              this.state.query.length>0 && showingBooks.map((book) => (
                 <li key={book.id}>
                   <Book
                     book={book}
@@ -81,7 +72,7 @@ export default class Search extends Component {
                     shelf={book.shelf}
                     authors={book.authors}
                     title={book.title}
-                    imageLinks={book.imageLinks}
+                    imageLinks={book.imageLinks.thumbnail}
                     updateShelf={(shelf) => {
                       this.addBookToShelf(book, shelf)
                     }} />

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 export default class Book extends Component {
-  
+
 state = {
-shelf: 'this.props.shelf'
+shelf: this.props.shelf
 }
 
 changeBookShelf (value) {
@@ -15,7 +15,11 @@ changeBookShelf (value) {
     return (
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imageLinks.thumbnail})` }}></div>
+            <div className="book-cover" style={
+              { width: 128, height: 193, 
+                backgroundImage: `url(${this.props.imageLinks})` }}>
+                  
+                </div>
             <div className="book-shelf-changer">
               <select 
               onChange={ (event) => this.changeBookShelf(event.target.value)}
@@ -36,4 +40,4 @@ changeBookShelf (value) {
 
     );
   }
-}
+  }
