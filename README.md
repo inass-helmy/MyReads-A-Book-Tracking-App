@@ -11,14 +11,15 @@
 
   ## 1. Description
   
-In the MyReads project, user'll create a bookshelf app that allows him to select and categorize books he has read, are        currently reading, or want to read. 
+In the MyReads project, user'll be able to have a bookshelf that allows him to select and categorize books he has read, are        currently reading, or want to read, also he will be able to search a book to add to his own library. 
 
   ## 2. Instructions
    In order to have this project up and running you need to :
-        - install npm using the command "npm-install"
-        - start npm using "npm-start"
+   - install npm using the command "npm-install"
+   - start npm using "npm-start"
+        
   ## 3. Project page
-  - https://github.com/inass-helmy/MyReads-A-Book-Tracking-App/edit/master/
+  - https://github.com/inass-helmy/MyReads-A-Book-Tracking-App/
 
   ## 4. Dependencies
   - Code is written in `HTML`, `CSS` ,`jsx` and `JavaScript`.
