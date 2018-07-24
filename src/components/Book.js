@@ -6,11 +6,6 @@ state = {
 shelf: this.props.shelf
 }
 
-changeBookShelf (value) {
-  this.props.updateShelf(value);
-    this.setState({ shelf: value });
-    };
-
   render() {
     return (
         <div className="book">
@@ -22,7 +17,9 @@ changeBookShelf (value) {
                 </div>
             <div className="book-shelf-changer">
               <select 
-              onChange={ (event) => this.changeBookShelf(event.target.value)}
+              onChange={ (event) => {this.props.updateShelf(event.target.value);
+              this.setState({ shelf: event.target.value })}
+            }
               value= {this.state.shelf}
 
               >

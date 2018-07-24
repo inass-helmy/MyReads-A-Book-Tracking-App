@@ -25,9 +25,14 @@ export default class BooksApp extends Component {
   }
 
   changeBookShelf = (book, shelf) => {
+    if (book.shelf !== shelf) {
     BooksAPI.update(book, shelf).then(() => {
-      this.getAllBooks();
+      book.shelf = shelf
+      this.setState(state => ({
+        books: state.books.filter(b => b.id !== book.id).concat([ book ])
+      }))
     })
+  }
   }
 
 
