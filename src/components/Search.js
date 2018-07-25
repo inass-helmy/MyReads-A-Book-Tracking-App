@@ -15,7 +15,7 @@ export default class Search extends Component {
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+    this.setState({ query })
     this.searchBooks(query);
   }
 
@@ -25,28 +25,28 @@ export default class Search extends Component {
 
   searchBooks = (query) => {
     const { myBooks } = this.props;
-   
+
     if (query.length > 0) {
-      BooksAPI.search(query).then((books) => {
-        if (books.length >0) {
+      BooksAPI.search(query.trim()).then((books) => {
+        if (books.length > 0) {
           books = books.filter((book) => (book.imageLinks));
           const searchedBooks = books.map((book) => {
-                    const myBook = myBooks.filter((myBook) => myBook.id === book.id);
-                    const shelf = myBook.length>0 ? myBook[0].shelf : 'none';
-                    return {
-                        id: book.id,
-                        shelf: shelf,
-                        authors: book.authors,
-                        title: book.title,
-                        imageLinks: book.imageLinks 
-                        }
-                });
+            const myBook = myBooks.filter((myBook) => myBook.id === book.id);
+            const shelf = myBook.length > 0 ? myBook[0].shelf : 'none';
+            return {
+              id: book.id,
+              shelf: shelf,
+              authors: book.authors,
+              title: book.title,
+              imageLinks: book.imageLinks
+            }
+          });
           searchedBooks.sort(sortBy('title'));
-          this.setState({showingBooks : searchedBooks});
-      }
-      })
+          this.setState({ showingBooks: searchedBooks });
         }
-      }
+      })
+    }
+  }
 
   render() {
     const { showingBooks } = this.state;
@@ -64,7 +64,7 @@ export default class Search extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {
-              this.state.query.length>0 && showingBooks.map((book) => (
+              this.state.query.length > 0 && showingBooks.map((book) => (
                 <li key={book.id}>
                   <Book
                     book={book}
@@ -72,7 +72,7 @@ export default class Search extends Component {
                     shelf={book.shelf}
                     authors={book.authors}
                     title={book.title}
-                    imageLinks={book.imageLinks.thumbnail}
+                    imageLinks={book.imageLinks}
                     updateShelf={(shelf) => {
                       this.addBookToShelf(book, shelf)
                     }} />

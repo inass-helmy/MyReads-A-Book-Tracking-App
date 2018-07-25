@@ -3,11 +3,7 @@ import Book from './Book'
 
 export default class BookShelf extends Component {
 
-  updateShelf(book, shelf) {
-    this.props.updateShelf(book, shelf)
-  }
-
-  render() {
+   render() {
     const books = this.props.books
     return (
       <div className="bookshelf">
@@ -22,9 +18,9 @@ export default class BookShelf extends Component {
                   shelf={book.shelf}
                   authors={book.authors}
                   title={book.title}
-                  imageLinks={book.imageLinks.thumbnail}
+                  imageLinks={book.imageLinks}
                   updateShelf={(shelf) =>
-                    this.updateShelf(book, shelf)} />
+                    this.props.updateShelf(book, shelf)} />
               </li>))}
           </ol>
         </div>

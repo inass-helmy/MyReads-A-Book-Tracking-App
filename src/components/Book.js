@@ -12,7 +12,7 @@ shelf: this.props.shelf
           <div className="book-top">
             <div className="book-cover" style={
               { width: 128, height: 193, 
-                backgroundImage: `url(${this.props.imageLinks})` }}>
+                backgroundImage: `url(${this.props.imageLinks.thumbnail})` }}>
                   
                 </div>
             <div className="book-shelf-changer">
