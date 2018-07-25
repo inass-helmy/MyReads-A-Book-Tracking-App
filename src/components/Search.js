@@ -22,15 +22,18 @@ export default class Search extends Component {
   addBookToShelf = (book, shelf) => {
     this.props.updateShelf(book, shelf);
   };
-
+  getThumbnailImage = book => {
+    book.imageLinks = book.imageLinks ? book.imageLinks : "http://via.placeholder.com/128x193?text=No%20Cover";
+    book.authors = book.authors ? book.authors : ["Unknown"];
+  }
   searchBooks = (query) => {
     const { myBooks } = this.props;
 
     if (query.length > 0) {
       BooksAPI.search(query.trim()).then((books) => {
-        if (books.length > 0) {
-          books = books.filter((book) => (book.imageLinks));
+        if (books && books.length > 0) {
           const searchedBooks = books.map((book) => {
+            this.getThumbnailImage(book);
             const myBook = myBooks.filter((myBook) => myBook.id === book.id);
             const shelf = myBook.length > 0 ? myBook[0].shelf : 'none';
             return {
