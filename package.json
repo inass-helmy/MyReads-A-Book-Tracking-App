@@ -1,7 +1,6 @@
 {
   "homepage": "http://inass-helmy.github.io/MyReads-A-Book-Tracking-App/",  
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "deploy": "gh-pages -d build",
     "escape-string-regexp": "^1.0.5",
