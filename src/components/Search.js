@@ -9,7 +9,7 @@ export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: '',
+      query: 'hotel',
       showingBooks: []
     };
   }
