@@ -1,5 +1,5 @@
 {
-  "homepage": "http://inass-helmy.github.io/MyReads-A-Book-Tracking-App/",  
+  "homepage": "https://inass-helmy.github.io/MyReads-A-Book-Tracking-App/",  
   "dependencies": {
     "deploy": "gh-pages -d build",
     "escape-string-regexp": "^1.0.5",
