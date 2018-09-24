@@ -11,7 +11,7 @@
   
  ## 1. Description
   
-In the MyReads project, user'll be able to have a bookshelf that allows him to select and categorize books he has read, are        currently reading, or want to read, also he will be able to search a book to add to his own library. 
+In the MyReads project, user'll be able to have a bookshelf that allows him to select and categorize books he has read, are        currently reading, or want to read, also he will be able to search a book to add to his own library but there are a list of search keywords you can use and you can find it inside a file named "SEARCH_TERMS". 
 
  ## 2. Instructions
    In order to have this project up and running you need to :
