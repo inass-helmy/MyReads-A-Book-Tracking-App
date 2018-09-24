@@ -19,7 +19,7 @@ In the MyReads project, user'll be able to have a bookshelf that allows him to s
    - start npm using "npm-start"
         
  ## 3. Project page
-  - https://github.com/inass-helmy/MyReads-A-Book-Tracking-App/
+  - https://inass-helmy.github.io/MyReads-A-Book-Tracking-App/
 
  ## 4. Dependencies
   - Code is written in `HTML`, `CSS` ,`jsx` and `JavaScript`.
