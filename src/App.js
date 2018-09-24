@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, HashRouter, Switch } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import AllBooks from './components/AllBooks'
@@ -39,7 +39,9 @@ export default class BooksApp extends Component {
   render() {
 
     return (
+      <HashRouter>
       <div className="app">
+      <switch>
         <Route exact path='/' render={() => (
           <AllBooks
             books={this.state.books}
@@ -52,7 +54,10 @@ export default class BooksApp extends Component {
             updateShelf={this.changeBookShelf}
           />
         )}/>
+        </switch>
+        
       </div>
+      </HashRouter>
     )
 
   }
